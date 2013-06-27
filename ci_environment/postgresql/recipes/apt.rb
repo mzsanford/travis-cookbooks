@@ -3,8 +3,12 @@ execute "apt-get update" do
   action :nothing
 end
 
+remote_file "/tmp/postgres-apt-key.asc" do
+  source "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
+end
+
 execute "add postgres apt key" do
-  command "wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -"
+  command "sudo apt-key add /tmp/postgres-apt-key.asc"
   action :nothing
 end
 

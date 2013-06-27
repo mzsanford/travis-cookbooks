@@ -17,4 +17,5 @@
 # limitations under the License.
 #
 
+include_recipe "postgresql::apt"
 include_recipe "postgresql::client"
